@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Plan = require('../models/plan');
 
 const planSchema = new mongoose.Schema(
   {
@@ -46,4 +45,4 @@ const planSchema = new mongoose.Schema(
 
 planSchema.index({ userId: 1, createdAt: -1 });
 
-module.exports = mongoose.model('Plan', planSchema);
+module.exports = mongoose.models.Plan || mongoose.model('Plan', planSchema);
