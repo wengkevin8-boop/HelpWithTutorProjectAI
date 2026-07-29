@@ -4,56 +4,6 @@ AI powered tutoring planner app, where users sign up and enter a
 subject/topic/level/goal and get a Gemini powered tutoring planner, 
 quiz, or concept explanation, which will be saved to their history.
 
-Project Structure
-
-project2/
-├── authMiddleware/
-│   └── authMiddleware.js       # Verifies JWT cookie, attaches req.userId
-├── bin/
-│   └── www                     # Entry point — starts the HTTP server
-├── servers/
-│   └── app.js                  # Express app: middleware, static files, routes
-├── views/                      # All files inside, express app entry file
-|   ├── error.ejs
-│   ├── history.ejs
-│   ├── index.ejs
-│   ├── signin.ejs
-|   ├── signup.ejs
-├── models/
-│   ├── db.js                   # connected to DB
-│   └── Plan.js                 # Mongoose Plan schema (tutoring plan/quiz/explanation)
-├── node_modules/
-├── public/                     # Everything served statically
-│   ├── login.html
-│   ├── signup.html
-│   ├── index.html
-│   ├── dashboard.html
-│   ├── history.html
-│   ├── css/
-│   │   ├── style.css
-│   │   ├── auth.css
-│   │   └── dashboard.css
-│   └── js/
-│       ├── auth.js             # Shared client-side auth helpers (signup form handler)
-│       ├── dashboard.js        # Dashboard page logic (generate plan/quiz/explanation)
-│       ├── history.js          # History page logic (list/view/delete plans)
-│       └── gemini.js           # Server-side Gemini integration
-├── routes/
-│   └── api.js                  # All /api/* routes (auth, plans, profile)
-├── servers/
-│   └── app.js                  # Express app: middleware, static files, routes
-├── views/                      # All files inside, express app entry file
-|   ├── error.ejs
-│   ├── history.ejs
-│   ├── index.ejs
-│   ├── signin.ejs
-|   ├── signup.ejs                               
-├── .env                        # Environment variables (not committed)
-├── .gitignore                     
-├── package-lock.json                        
-├── package.json
-└── README.md
-
 Generation Powered by AI
 
 - Learning Plans: Produce tutoring plans on a weekly basis, which comprise the goals, 
@@ -114,3 +64,7 @@ Username, Email Address, Password
 - Username: tomjerry
 - Email Address: tomjerry@gmail.com
 - Password: tomjerry18!
+
+Website Link:
+
+https://helpwithtutor-frontend-skxw.onrender.com
