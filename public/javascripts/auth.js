@@ -1,45 +1,50 @@
 async function handleSignIn(e) {
   e.preventDefault();
 
-  const btn = document.getElementById('submit-btn');
-  const errorEl = document.getElementById('auth-error');
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
+  var btn = document.getElementById('submit-btn');
+  var errorEl = document.getElementById('auth-error');
+  var email = document.getElementById('email').value.trim();
+  var password = document.getElementById('password').value;
 
-  // Hide previous error
   errorEl.style.display = 'none';
 
-  // Basic client-side check
   if (!email || !password) {
     errorEl.textContent = 'Email and password are required.';
     errorEl.style.display = 'block';
     return;
   }
 
-  // Loading state
   btn.disabled = true;
   btn.value = 'Signing in...';
 
   try {
-    const res = await fetch('/api/login', {
+    var res = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email: email, password: password })
     });
-    const data = await res.json();
+
+    var raw = await res.text();
+    var data;
+    try {
+      data = JSON.parse(raw);
+    } catch (parseErr) {
+      throw new Error('Server error. Try again.');
+    }
 
     if (!data.success) {
-      errorEl.textContent = data.message;
+      errorEl.textContent = data.message || 'Something went wrong.';
       errorEl.style.display = 'block';
       btn.disabled = false;
       btn.value = 'Sign in';
       return;
     }
 
-    // Success — redirect to dashboard
     window.location.href = '/dashboard';
   } catch (err) {
-    errorEl.textContent = 'Network error. Please check your connection and try again.';
+    errorEl.textContent = err.message === 'Failed to fetch'
+      ? 'Cannot reach server.'
+      : err.message;
     errorEl.style.display = 'block';
     btn.disabled = false;
     btn.value = 'Sign in';
@@ -49,16 +54,14 @@ async function handleSignIn(e) {
 async function handleSignUp(e) {
   e.preventDefault();
 
-  const btn = document.getElementById('submit-btn');
-  const errorEl = document.getElementById('auth-error');
-  const username = document.getElementById('username').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
+  var btn = document.getElementById('submit-btn');
+  var errorEl = document.getElementById('auth-error');
+  var username = document.getElementById('username').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var password = document.getElementById('password').value;
 
-  // Hide previous error
   errorEl.style.display = 'none';
 
-  // Basic client-side checks
   if (!username || !email || !password) {
     errorEl.textContent = 'All fields are required.';
     errorEl.style.display = 'block';
@@ -74,36 +77,38 @@ async function handleSignUp(e) {
     errorEl.style.display = 'block';
     return;
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    errorEl.textContent = 'Please enter a valid email address.';
-    errorEl.style.display = 'block';
-    return;
-  }
 
-  // Loading state
   btn.disabled = true;
   btn.value = 'Creating account...';
 
   try {
-    const res = await fetch('/api/signup', {
+    var res = await fetch('/api/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ username: username, email: email, password: password })
     });
-    const data = await res.json();
+
+    var raw = await res.text();
+    var data;
+    try {
+      data = JSON.parse(raw);
+    } catch (parseErr) {
+      throw new Error('Server error. Try again.');
+    }
 
     if (!data.success) {
-      errorEl.textContent = data.message;
+      errorEl.textContent = data.message || 'Something went wrong.';
       errorEl.style.display = 'block';
       btn.disabled = false;
       btn.value = 'Sign up';
       return;
     }
 
-    // Success — redirect to dashboard
     window.location.href = '/dashboard';
   } catch (err) {
-    errorEl.textContent = 'Network error. Please check your connection and try again.';
+    errorEl.textContent = err.message === 'Failed to fetch'
+      ? 'Cannot reach server.'
+      : err.message;
     errorEl.style.display = 'block';
     btn.disabled = false;
     btn.value = 'Sign up';
