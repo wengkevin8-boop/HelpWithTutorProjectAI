@@ -1,0 +1,20 @@
+{
+  "name": "project2",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node --watch ./bin/www"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^17.4.2",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongodb": "^7.5.0",
+    "mongoose": "^9.8.1",
+    "morgan": "~1.9.1"
+  }
+}

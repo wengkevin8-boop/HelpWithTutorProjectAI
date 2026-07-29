@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HelpWithTutor — AI-Powered Tutoring Plans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-[#050505] text-white font-[Inter]">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-[#E30613] flex items-center justify-center">
+          <i data-lucide="graduation-cap" class="w-5 h-5 text-white"></i>
+        </div>
+        <span class="font-[Oswald] text-xl font-medium tracking-wide">HELP<span class="text-[#E30613]">WITH</span>TUTOR</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#features" class="text-sm font-normal tracking-wide text-gray-400 hover:text-[#E30613] transition-colors duration-300">Features</a>
+        <a href="#how-it-works" class="text-sm font-normal tracking-wide text-gray-400 hover:text-[#E30613] transition-colors duration-300">How It Works</a>
+        <a href="#ai-showcase" class="text-sm font-normal tracking-wide text-gray-400 hover:text-[#E30613] transition-colors duration-300">AI Power</a>
+        <div id="nav-auth-buttons" class="flex items-center gap-3">
+        </div>
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white transition-colors">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a0a] border-t border-white/5 px-6 py-4 space-y-3">
+      <a href="#features" class="block text-sm text-gray-400 hover:text-[#E30613] py-2">Features</a>
+      <a href="#how-it-works" class="block text-sm text-gray-400 hover:text-[#E30613] py-2">How It Works</a>
+      <a href="#ai-showcase" class="block text-sm text-gray-400 hover:text-[#E30613] py-2">AI Power</a>
+      <div id="mobile-auth-buttons" class="pt-3 border-t border-white/5 space-y-2">
+        <!-- Populated by JS after auth check -->
+      </div>
+    </div>
+  </nav>
+
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+    </div>
+
+    <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[#E30613] rounded-full opacity-[0.03] blur-[150px] pointer-events-none"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 pt-24 w-full">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 mb-8">
+          <span class="w-2 h-2 rounded-full bg-[#E30613] animate-pulse"></span>
+          <span class="text-xs font-medium tracking-widest uppercase text-gray-400">Powered by Google Gemini AI</span>
+        </div>
+
+        <h1 class="font-[Oswald] text-5xl md:text-7xl font-medium leading-[0.9] tracking-tight mb-6">
+          SMART TUTORING<br />
+          <span class="bg-gradient-to-r from-[#E30613] to-[#f87171] bg-clip-text text-transparent">PLANS IN SECONDS</span>
+        </h1>
+
+        <p class="text-lg md:text-xl font-light text-gray-400 leading-relaxed max-w-xl mb-10">
+          Generate personalized tutoring plans, quizzes, and concept explanations tailored to any subject, level, and learning goal — all powered by AI.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/signup" class="inline-flex items-center gap-2 px-8 py-4 bg-[#E30613] hover:bg-[#b91c1c] text-white text-sm font-medium tracking-widest uppercase rounded-lg transition-colors duration-300">
+            Get Started Free
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#how-it-works" class="inline-flex items-center gap-2 px-8 py-4 border border-white/20 hover:border-white/40 text-white text-sm font-medium tracking-widest uppercase rounded-lg transition-all duration-300">
+            See How It Works
+          </a>
+        </div>
+
+        <div class="flex gap-10 mt-14">
+          <div>
+            <div class="font-[Oswald] text-3xl font-medium text-white">3</div>
+            <div class="text-xs text-gray-500 tracking-wide uppercase mt-1">AI Tools</div>
+          </div>
+          <div>
+            <div class="font-[Oswald] text-3xl font-medium text-white">&infin;</div>
+            <div class="text-xs text-gray-500 tracking-wide uppercase mt-1">Subjects</div>
+          </div>
+          <div>
+            <div class="font-[Oswald] text-3xl font-medium text-white">&lt;10s</div>
+            <div class="text-xs text-gray-500 tracking-wide uppercase mt-1">Generation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <i data-lucide="chevron-down" class="w-6 h-6 text-gray-500"></i>
+    </div>
+  </section>
+
+  <section id="features" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs font-medium tracking-widest uppercase text-[#E30613]">Features</span>
+        <h2 class="font-[Oswald] text-3xl md:text-5xl font-medium tracking-tight mt-3">EVERYTHING YOU NEED<br />TO TUTOR EFFECTIVELY</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-1">
+        <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 hover:bg-[#E30613] transition-all duration-500 cursor-default">
+          <div class="w-12 h-12 rounded-xl bg-white/5 group-hover:bg-white group-hover:text-[#E30613] flex items-center justify-center mb-6 transition-all duration-500">
+            <i data-lucide="book-open" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-[Oswald] text-xl font-medium tracking-wide mb-3">Tutoring Plans</h3>
+          <p class="text-sm font-light text-gray-400 group-hover:text-white/80 leading-relaxed transition-colors duration-500">
+            Get week-by-week structured learning plans with objectives, activities, resources, and assessments — fully customized to your needs.
+          </p>
+        </div>
+
+        <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 hover:bg-[#E30613] transition-all duration-500 cursor-default">
+          <div class="w-12 h-12 rounded-xl bg-white/5 group-hover:bg-white group-hover:text-[#E30613] flex items-center justify-center mb-6 transition-all duration-500">
+            <i data-lucide="help-circle" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-[Oswald] text-xl font-medium tracking-wide mb-3">Auto Quizzes</h3>
+          <p class="text-sm font-light text-gray-400 group-hover:text-white/80 leading-relaxed transition-colors duration-500">
+            Instantly generate multiple-choice quizzes with explanations to test understanding and reinforce key concepts.
+          </p>
+        </div>
+
+        <div class="group relative bg-[#0a0a0a] border border-white/5 p-8 hover:bg-[#E30613] transition-all duration-500 cursor-default">
+          <div class="w-12 h-12 rounded-xl bg-white/5 group-hover:bg-white group-hover:text-[#E30613] flex items-center justify-center mb-6 transition-all duration-500">
+            <i data-lucide="lightbulb" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-[Oswald] text-xl font-medium tracking-wide mb-3">Concept Explainer</h3>
+          <p class="text-sm font-light text-gray-400 group-hover:text-white/80 leading-relaxed transition-colors duration-500">
+            Break down complex topics with analogies, key points, common misconceptions, and suggested next steps for deeper learning.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="py-24 px-6 bg-[#0a0a0a]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs font-medium tracking-widest uppercase text-[#E30613]">Process</span>
+        <h2 class="font-[Oswald] text-3xl md:text-5xl font-medium tracking-tight mt-3">THREE SIMPLE STEPS</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="relative text-center">
+          <div class="w-16 h-16 rounded-full border-2 border-[#E30613] flex items-center justify-center mx-auto mb-6">
+            <span class="font-[Oswald] text-2xl font-medium text-[#E30613]">1</span>
+          </div>
+          <h3 class="font-[Oswald] text-lg font-medium tracking-wide mb-2">Create Account</h3>
+          <p class="text-sm text-gray-400 font-light leading-relaxed">Sign up with your email and password — takes less than 30 seconds.</p>
+        </div>
+        <div class="relative text-center">
+          <div class="w-16 h-16 rounded-full border-2 border-[#E30613] flex items-center justify-center mx-auto mb-6">
+            <span class="font-[Oswald] text-2xl font-medium text-[#E30613]">2</span>
+          </div>
+          <h3 class="font-[Oswald] text-lg font-medium tracking-wide mb-2">Describe Your Need</h3>
+          <p class="text-sm text-gray-400 font-light leading-relaxed">Enter the subject, topic, student level, and your learning goals.</p>
+        </div>
+        <div class="relative text-center">
+          <div class="w-16 h-16 rounded-full border-2 border-[#E30613] flex items-center justify-center mx-auto mb-6">
+            <span class="font-[Oswald] text-2xl font-medium text-[#E30613]">3</span>
+          </div>
+          <h3 class="font-[Oswald] text-lg font-medium tracking-wide mb-2">Get AI Results</h3>
+          <p class="text-sm text-gray-400 font-light leading-relaxed">Gemini AI generates your personalized content in seconds. Save, review, and revisit anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-showcase" class="py-24 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <div class="relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+      </div>
+
+      <div>
+        <span class="text-xs font-medium tracking-widest uppercase text-[#E30613]">Google Gemini</span>
+        <h2 class="font-[Oswald] text-3xl md:text-4xl font-medium tracking-tight mt-3 mb-6">POWERED BY STATE-OF-THE-ART AI</h2>
+        <p class="text-gray-400 font-light leading-relaxed mb-6">
+          HelpWithTutor leverages Google's Gemini 1.5 Flash model — a fast, intelligent large language model capable of understanding complex educational contexts and generating structured, high-quality tutoring content.
+        </p>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-5 h-5 text-[#E30613] mt-0.5 flex-shrink-0"></i>
+            <span class="text-sm text-gray-300 font-light">Structured JSON output — reliably parsed and displayed</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-5 h-5 text-[#E30613] mt-0.5 flex-shrink-0"></i>
+            <span class="text-sm text-gray-300 font-light">Context-aware — adapts to beginner, intermediate, and advanced levels</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-5 h-5 text-[#E30613] mt-0.5 flex-shrink-0"></i>
+            <span class="text-sm text-gray-300 font-light">Sub-10-second generation for most requests</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle" class="w-5 h-5 text-[#E30613] mt-0.5 flex-shrink-0"></i>
+            <span class="text-sm text-gray-300 font-light">All plans saved to your personal history for later review</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 px-6 bg-[#0a0a0a]">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-[Oswald] text-3xl md:text-5xl font-medium tracking-tight mb-6">READY TO PLAN<br />YOUR NEXT LESSON?</h2>
+      <p class="text-gray-400 font-light leading-relaxed mb-10">Join HelpWithTutor and let AI do the heavy lifting. Free to start, no credit card required.</p>
+      <a href="/signup" class="inline-flex items-center gap-2 px-10 py-4 bg-[#E30613] hover:bg-[#b91c1c] text-white text-sm font-medium tracking-widest uppercase rounded-lg transition-colors duration-300">
+        Create Free Account
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/5 py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-[#E30613] flex items-center justify-center">
+          <i data-lucide="graduation-cap" class="w-4 h-4 text-white"></i>
+        </div>
+        <span class="font-[Oswald] text-sm font-medium tracking-wide text-gray-500">HELPWITHTUTOR</span>
+      </div>
+      <p class="text-xs text-gray-600">&copy; 2025 HelpWithTutor. Built with Google Gemini AI. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="fixed bottom-6 right-6 z-[100] space-y-3"></div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/me');
+        const data = await res.json();
+        return data.success ? data.user : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function renderAuthButtons(user) {
+      const desktopContainer = document.getElementById('nav-auth-buttons');
+      const mobileContainer = document.getElementById('mobile-auth-buttons');
+      if (!desktopContainer || !mobileContainer) return;
+
+      if (user) {
+        const initial = (user.username || 'U').charAt(0).toUpperCase();
+
+        desktopContainer.innerHTML = `
+          <a href="/dashboard" class="inline-flex items-center gap-2 px-5 py-2.5 bg-[#E30613] hover:bg-[#b91c1c] text-white text-xs font-medium tracking-widest uppercase rounded-lg transition-colors duration-300">
+            <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-[10px]">${initial}</span>
+            Dashboard
+          </a>
+          <button onclick="handleLogout()" class="px-5 py-2.5 border border-white/20 hover:border-white/40 text-white text-xs font-medium tracking-widest uppercase rounded-lg transition-all duration-300">Logout</button>
+        `;
+        mobileContainer.innerHTML = `
+          <a href="/dashboard" class="block text-center px-5 py-2.5 bg-[#E30613] hover:bg-[#b91c1c] text-white text-xs font-medium tracking-widest uppercase rounded-lg transition-colors duration-300">Dashboard</a>
+          <button onclick="handleLogout()" class="w-full text-center px-5 py-2.5 border border-white/20 hover:border-white/40 text-white text-xs font-medium tracking-widest uppercase rounded-lg transition-all duration-300">Logout</button>
+        `;
+      } else {
+        desktopContainer.innerHTML = `
+          <a href="/signin" class="px-5 py-2.5 border border-white/20 hover:border-white/40 text-white text-xs font-medium tracking-widest uppercase rounded-lg transition-all duration-300">Sign In</a>
+          <a href="/signup" class="px-5 py-2.5 bg-[#E30613] hover:bg-[#b91c1c] text-white text-xs font-medium tracking-widest uppercase rounded-lg transition-colors duration-300">Sign Up</a>
+        `;
+        mobileContainer.innerHTML = `
+          <a href="/signin" class="block text-center px-5 py-2.5 border border-white/20 hover:border-white/40 text-white text-xs font-medium tracking-widest uppercase rounded-lg transition-all duration-300">Sign In</a>
+          <a href="/signup" class="block text-center px-5 py-2.5 bg-[#E30613] hover:bg-[#b91c1c] text-white text-xs font-medium tracking-widest uppercase rounded-lg transition-colors duration-300">Sign Up</a>
+        `;
+      }
+    }
+
+    async function handleLogout() {
+      try {
+        await fetch('/api/logout', { method: 'POST' });
+      } catch (e) {
+        console.error('Logout failed', e);
+      }
+      // Re-render buttons as logged-out state
+      renderAuthButtons(null);
+      showToast('You have been signed out.', 'info');
+    }
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var targetId = link.getAttribute('href');
+        var target = document.querySelector(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.getElementById('mobile-menu').classList.add('hidden');
+        }
+      });
+    });
+
+    function showToast(message, type) {
+      type = type || 'info';
+      var container = document.getElementById('toast-container');
+      var toast = document.createElement('div');
+      var bgColors = {
+        success: 'background:#16a34a',
+        error: 'background:#E30613',
+        info: 'background:#374151'
+      };
+      toast.setAttribute('style', (bgColors[type] || bgColors.info) + '; color:#fff; font-size:0.875rem; padding:0.75rem 1.25rem; border-radius:0.5rem; box-shadow:0 10px 15px -3px rgba(0,0,0,0.3); transform:translateX(120%); transition:transform 0.3s ease; white-space:nowrap;');
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      requestAnimationFrame(function () {
+        toast.style.transform = 'translateX(0)';
+      });
+
+      setTimeout(function () {
+        toast.style.transform = 'translateX(120%)';
+        setTimeout(function () {
+          if (toast.parentNode) toast.parentNode.removeChild(toast);
+        }, 300);
+      }, 4000);
+    }
+
+    (async function () {
+      var user = await checkAuth();
+      renderAuthButtons(user);
+      // Re-init icons after dynamic content
+      lucide.createIcons();
+    })();
+  </script>
+</body>
+</html>

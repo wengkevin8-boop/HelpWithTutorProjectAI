@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — HelpWithTutor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="javascript" href="/public/javascript/dashboard.js" />
+</head>
+<body class="bg-[#050505] text-white font-[Inter] min-h-screen">
+
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/dashboard" class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-[#E30613] flex items-center justify-center">
+          <i data-lucide="graduation-cap" class="w-4 h-4 text-white"></i>
+        </div>
+        <span class="font-[Oswald] text-lg font-medium tracking-wide hidden sm:inline">HELP<span class="text-[#E30613]">WITH</span>TUTOR</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="/history" class="flex items-center gap-2 text-sm text-gray-400 hover:text-[#E30613] transition-colors">
+          <i data-lucide="clock" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">History</span>
+        </a>
+        <div id="user-menu" class="relative">
+          <button id="user-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20 transition-colors">
+            <div class="w-6 h-6 rounded-full bg-[#E30613] flex items-center justify-center text-xs font-medium" id="user-avatar">U</div>
+            <span class="text-sm text-gray-300 hidden sm:inline" id="user-name">User</span>
+            <i data-lucide="chevron-down" class="w-3 h-3 text-gray-500"></i>
+          </button>
+          <div id="user-dropdown" class="hidden absolute right-0 top-full mt-2 w-48 bg-[#111] border border-white/10 rounded-lg shadow-2xl overflow-hidden">
+            <div class="px-4 py-3 border-b border-white/5">
+              <p class="text-sm font-medium" id="dropdown-name">User</p>
+              <p class="text-xs text-gray-500" id="dropdown-email">user@email.com</p>
+            </div>
+            <a href="/history" class="w-full text-left px-4 py-2.5 text-sm text-gray-400 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-2 block">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              History
+            </a>
+            <button onclick="handleLogout()" class="w-full text-left px-4 py-2.5 text-sm text-gray-400 hover:bg-white/5 hover:text-[#E30613] transition-colors flex items-center gap-2">
+              <i data-lucide="log-out" class="w-4 h-4"></i>
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24 pb-16 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <div class="mb-10">
+        <h1 class="font-[Oswald] text-3xl md:text-4xl font-medium tracking-tight">Generate Plan</h1>
+        <p class="text-gray-400 font-light mt-2">Describe what you want to learn and let AI build your plan.</p>
+      </div>
+
+      <div class="bg-[#0a0a0a] border border-white/5 rounded-2xl p-6 md:p-8 mb-8">
+        <form id="gen-form" class="space-y-6" novalidate>
+
+          <div>
+            <label class="block text-xs font-medium tracking-widest uppercase text-gray-400 mb-3">What do you need?</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" data-type="plan" class="type-btn active-type flex flex-col items-center gap-2 py-4 px-3 rounded-xl border border-white/10 bg-white/5 text-sm transition-all duration-300 hover:border-[#E30613]/50">
+                <i data-lucide="book-open" class="w-5 h-5"></i>
+                <span class="text-xs tracking-wide">Tutoring Plan</span>
+              </button>
+              <button type="button" data-type="quiz" class="type-btn flex flex-col items-center gap-2 py-4 px-3 rounded-xl border border-white/10 bg-transparent text-sm text-gray-500 transition-all duration-300 hover:border-[#E30613]/50">
+                <i data-lucide="help-circle" class="w-5 h-5"></i>
+                <span class="text-xs tracking-wide">Quiz</span>
+              </button>
+              <button type="button" data-type="explanation" class="type-btn flex flex-col items-center gap-2 py-4 px-3 rounded-xl border border-white/10 bg-transparent text-sm text-gray-500 transition-all duration-300 hover:border-[#E30613]/50">
+                <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                <span class="text-xs tracking-wide">Explanation</span>
+              </button>
+            </div>
+            <input type="hidden" id="gen-type" value="plan" />
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label for="gen-subject" class="block text-xs font-medium tracking-widest uppercase text-gray-400 mb-2">Subject</label>
+              <input type="text" id="gen-subject" required placeholder="e.g. Mathematics, Physics, History" class="w-full px-4 py-3 bg-[#1a1a1a] border border-white/10 rounded-lg text-sm font-light text-white placeholder-gray-600 focus:outline-none focus:border-[#E30613] transition-colors duration-300" />
+            </div>
+            <div>
+              <label for="gen-topic" class="block text-xs font-medium tracking-widest uppercase text-gray-400 mb-2">Topic</label>
+              <input type="text" id="gen-topic" required placeholder="e.g. Quadratic Equations" class="w-full px-4 py-3 bg-[#1a1a1a] border border-white/10 rounded-lg text-sm font-light text-white placeholder-gray-600 focus:outline-none focus:border-[#E30613] transition-colors duration-300" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium tracking-widest uppercase text-gray-400 mb-3">Student Level</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button type="button" data-level="Beginner" class="level-btn flex items-center justify-center py-2.5 rounded-lg border border-white/10 text-sm text-gray-500 transition-all duration-300 hover:border-[#E30613]/50">Beginner</button>
+              <button type="button" data-level="Intermediate" class="level-btn active-level flex items-center justify-center py-2.5 rounded-lg border border-[#E30613] bg-[#E30613]/10 text-sm text-[#E30613] transition-all duration-300">Intermediate</button>
+              <button type="button" data-level="Advanced" class="level-btn flex items-center justify-center py-2.5 rounded-lg border border-white/10 text-sm text-gray-500 transition-all duration-300 hover:border-[#E30613]/50">Advanced</button>
+            </div>
+            <input type="hidden" id="gen-level" value="Intermediate" />
+          </div>
+
+          <div id="goals-field">
+            <label for="gen-goals" class="block text-xs font-medium tracking-widest uppercase text-gray-400 mb-2">Learning Goals <span class="text-gray-600">(optional)</span></label>
+            <textarea id="gen-goals" rows="3" placeholder="e.g. Be able to solve any quadratic equation, understand the discriminant, and apply to real-world problems" class="w-full px-4 py-3 bg-[#1a1a1a] border border-white/10 rounded-lg text-sm font-light text-white placeholder-gray-600 focus:outline-none focus:border-[#E30613] transition-colors duration-300 resize-none"></textarea>
+          </div>
+
+          <div id="gen-error" class="hidden text-sm text-[#E30613] bg-[#E30613]/10 border border-[#E30613]/20 rounded-lg px-4 py-3"></div>
+
+          <button type="submit" id="gen-btn" class="w-full py-3.5 bg-[#E30613] hover:bg-[#b91c1c] text-white text-sm font-medium tracking-widest uppercase rounded-lg transition-colors duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+            <i data-lucide="sparkles" class="w-4 h-4" id="gen-icon"></i>
+            <span id="gen-btn-text">Generate with AI</span>
+            <svg id="gen-spinner" class="hidden animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <div id="result-area" class="hidden">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="font-[Oswald] text-2xl font-medium tracking-tight" id="result-title">Your Plan</h2>
+          <div class="flex items-center gap-2">
+            <button onclick="copyResult()" class="p-2 rounded-lg border border-white/10 hover:border-white/20 text-gray-400 hover:text-white transition-all" title="Copy to clipboard">
+              <i data-lucide="copy" class="w-4 h-4"></i>
+            </button>
+            <a href="/history" class="flex items-center gap-2 px-4 py-2 border border-white/10 hover:border-white/20 text-sm text-gray-400 hover:text-white rounded-lg transition-all">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              View All
+            </a>
+          </div>
+        </div>
+        <div id="result-content" class="bg-[#0a0a0a] border border-white/5 rounded-2xl p-6 md:p-8 space-y-6">
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="toast-container" class="fixed bottom-6 right-6 z-[100] space-y-3"></div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

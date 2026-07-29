@@ -1,0 +1,19 @@
+.auth-input.input-error {
+  border-color: #E30613;
+}
+
+.auth-input.input-error:focus {
+  border-color: #E30613;
+  box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.15);
+}
+
+.error-msg {
+  background-color: #fff0f0;
+  color: #E30613;
+  border: 1px solid rgba(227, 6, 19, 0.2);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 13px;
+  margin: 16px 20px 0 20px;
+  width: calc(100% - 40px);
+}

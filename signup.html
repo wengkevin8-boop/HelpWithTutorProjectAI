@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — HelpWithTutor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+
+<body class="bg-[#050505] text-white font-[Inter] min-h-screen flex items-center justify-center px-4 py-12">
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#E30613] rounded-full opacity-[0.03] blur-[150px] pointer-events-none"></div>
+  <div class="w-full max-w-md relative bg-[#111111] border border-white/10 rounded-2xl p-8 shadow-2xl">
+    <a href="/" class="flex items-center justify-center gap-3 mb-8">
+      <div class="w-10 h-10 rounded-xl bg-[#E30613] flex items-center justify-center">
+        <i data-lucide="graduation-cap" class="w-5 h-5 text-white"></i>
+      </div>
+      <span class="font-[Oswald] text-2xl font-medium tracking-wide">
+        HELP<span class="text-[#E30613]">WITH</span>TUTOR
+      </span>
+    </a>
+
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold">Sign Up</h1>
+      <p class="text-gray-400 mt-2">
+        Already have an account?
+        <a href="/signin" class="text-[#E30613] hover:underline">Sign In</a>
+      </p>
+    </div>
+
+    <div id="auth-error" class="error-msg" style="display:none;"></div>
+
+    <form id="signup-form" class="space-y-5" novalidate>
+
+      <div>
+        <label for="username" class="block mb-2 text-sm font-medium">Username</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          required
+          minlength="3"
+          placeholder="Choose a username"
+          class="auth-input w-full rounded-xl bg-[#1A1A1A] border border-white/10 px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E30613] transition-all duration-200"
+        >
+      </div>
+
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          placeholder="you@example.com"
+          class="auth-input w-full rounded-xl bg-[#1A1A1A] border border-white/10 px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E30613] transition-all duration-200"
+        >
+      </div>
+
+      <div>
+        <label for="password" class="block mb-2 text-sm font-medium">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          required
+          minlength="6"
+          placeholder="At least 6 characters"
+          class="auth-input w-full rounded-xl bg-[#1A1A1A] border border-white/10 px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E30613] transition-all duration-200"
+        >
+      </div>
+
+      <div class="flex items-start gap-3">
+        <input
+          type="checkbox"
+          id="no-emails"
+          class="mt-1 w-4 h-4 rounded border-white/20 bg-[#1A1A1A] text-[#E30613] focus:ring-[#E30613] cursor-pointer accent-[#E30613]"
+        >
+        <label for="no-emails" class="text-xs text-gray-500 leading-relaxed cursor-pointer">
+          I do not want to receive emails with advertising, news, suggestions or marketing promotions
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        id="submit-btn"
+        class="w-full bg-[#E30613] hover:bg-[#b91c1c] transition-colors duration-300 rounded-xl py-3.5 text-sm font-semibold tracking-widest uppercase flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <span id="btn-text">Sign Up</span>
+        <svg id="btn-spinner" class="hidden animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+      </button>
+    </form>
+
+    <p class="text-center text-[10px] text-gray-600 mt-6 leading-relaxed">
+      By signing up to create an account, you are accepting our terms of service and privacy policy
+    </p>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+
+    // Clear error on input
+    document.querySelectorAll('.auth-input').forEach(function (input) {
+      input.addEventListener('input', function () {
+        input.classList.remove('input-error');
+        document.getElementById('auth-error').style.display = 'none';
+      });
+    });
+
+    // Attach signup handler
+    document.getElementById('signup-form').addEventListener('submit', handleSignUp);
+  </script>
+</body>
+</html>
